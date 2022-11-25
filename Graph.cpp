@@ -52,6 +52,34 @@ int main(){
 
     int size = locations.size();
     int mainarr[size][size];
-    
+
+    for(int i=0;i<size;i++){
+        for(int j=0;j<size;j++){
+            mainarr[i][j] = 0;
+        }
+    }
+    for(int i=0;i<size;i++){
+        for(int j=0;j<size;j++){
+            cout << mainarr[i][j] << " ";
+        }
+        cout << "\n";
+    }
+    for(int i=0;i<size;i++){
+        for(int j=i;j<size;j++){
+            if(i != j){
+                float time;
+                cout << "Enter the flight time (in hours) from " << locations[i] << " to " << locations[j] << endl;
+                cin >> time;
+                mainarr[i][j] = time;
+                mainarr[j][i] = time;
+            }
+        }
+    }
+    for(int i=0;i<size;i++){
+        for(int j=0;j<size;j++){
+            cout << mainarr[i][j] << " ";
+        }
+        cout << "\n";
+    }
     return 0;
 }
