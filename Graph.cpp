@@ -15,16 +15,29 @@ vector<string> add_location(vector<string> locations){
 
 void print_locations(vector<string> locations){
     for(int i=0;i<locations.size();i++){
-        cout << locations[i] << endl;
+        cout << locations[i] << " ";
     }
+    cout << endl;
+}
+
+int get_index(vector<string> locations){
+    string name;
+    cout << "Enter the location\n";
+    cin >> name;
+    int index = -1;
+    for(int i=0;i<locations.size();i++){
+        if(locations[i] == name){
+            index = i;
+        }
+    }
+    return index;
 }
 
 int main(){
     vector<string> locations;
 
-    vector<vector<int>> main;
-
     cout << "Welcome to Flightfinder\n";
+    cout << "\nTHIS IS THE SETUP\n\n";
     cout << "1. Add location\n";
     cout << "2. Display locations\n";
     cout << "3. Exit setup\n";
@@ -52,18 +65,13 @@ int main(){
 
     int size = locations.size();
     int mainarr[size][size];
-
+    
     for(int i=0;i<size;i++){
         for(int j=0;j<size;j++){
             mainarr[i][j] = 0;
         }
     }
-    for(int i=0;i<size;i++){
-        for(int j=0;j<size;j++){
-            cout << mainarr[i][j] << " ";
-        }
-        cout << "\n";
-    }
+
     for(int i=0;i<size;i++){
         for(int j=i;j<size;j++){
             if(i != j){
@@ -75,11 +83,32 @@ int main(){
             }
         }
     }
-    for(int i=0;i<size;i++){
-        for(int j=0;j<size;j++){
-            cout << mainarr[i][j] << " ";
+
+    cout << "\nWELCOME TO FLIGHTFINDER\n\n";
+    cout << "1. Display the matrix\n";
+    cout << "2. Find index\n";
+    while(true){
+        int inp;
+        cout << ">> ";
+        cin >> inp;
+        switch(inp)
+        {
+        case 1:
+            for(int i=0;i<size;i++){
+                for(int j=0;j<size;j++){
+                    cout << mainarr[i][j] << " ";
+                }
+                cout << "\n";
+            }
+            break;
+        case 2:
+            int inedex;
+            inedex = get_index(locations);
+            cout << inedex;
+            break;
+        default:
+            break;
         }
-        cout << "\n";
     }
     return 0;
 }
